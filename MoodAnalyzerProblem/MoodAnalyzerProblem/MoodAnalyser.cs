@@ -52,8 +52,8 @@ namespace MoodAnalyzerProblem
         ExceptionType type;
         public enum ExceptionType
         {
-            Null, empty,
-            InvalideClass,
+            Null, empty, InvalideClass, Invalideconstructor,
+
         }
         public CustomException(ExceptionType type, string message) : base(message)
         {
@@ -61,9 +61,14 @@ namespace MoodAnalyzerProblem
         }
     }
 
+
     public class MoodAnayserFactory // Reflection 
     {
-        public static object CreateInstance(string ClassName)
+        public MoodAnayserFactory()
+        {
+
+        }
+        public static object CreateInstance(string ClassName, string ConstructorName)
         {
             try
             {
@@ -72,14 +77,19 @@ namespace MoodAnalyzerProblem
                 {
                     throw new CustomException(CustomException.ExceptionType.InvalideClass, "No such class");
                 }
+                var constructor = type.GetConstructors();
+                Console.WriteLine("!!!!!!!!!!!" + constructor.ToString());
+                if (constructor.ToString() != ConstructorName)
+                {
+                    throw new CustomException(CustomException.ExceptionType.Invalideconstructor, "wrong constructor");
+                }
                 return type;
             }
             catch (CustomException obj)
             {
                 return obj.Message;
             }
+
         }
     }
 }
-
-    
