@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,6 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnayser
     {
-
         public string message;
         public MoodAnayser() //
         {
@@ -68,7 +68,7 @@ namespace MoodAnalyzerProblem
         {
 
         }
-        public static object CreateInstance(string ClassName, string ConstructorName)
+        public static object CreateInstance(string ClassName, [Optional] string ConstructorName)
         {
             try
             {
@@ -77,13 +77,16 @@ namespace MoodAnalyzerProblem
                 {
                     throw new CustomException(CustomException.ExceptionType.InvalideClass, "No such class");
                 }
-                var constructor = type.GetConstructors();
-                Console.WriteLine("!!!!!!!!!!!" + constructor.ToString());
+
+                var constructor = type.GetConstructor(new[] { typeof(string) });
                 if (constructor.ToString() != ConstructorName)
                 {
                     throw new CustomException(CustomException.ExceptionType.Invalideconstructor, "wrong constructor");
                 }
-                return type;
+
+                object instance = constructor.Invoke(new object[] { "HAPPY" });
+                return instance;
+                // return type;
             }
             catch (CustomException obj)
             {
