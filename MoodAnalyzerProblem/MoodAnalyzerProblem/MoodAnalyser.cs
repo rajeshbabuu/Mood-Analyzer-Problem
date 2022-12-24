@@ -9,7 +9,7 @@ namespace MoodAnalyzerProblem
     public class MoodAnalyser
     {
         public string message;
-        static MoodAnalyser() //
+        static MoodAnalyser() 
         {
 
         }
