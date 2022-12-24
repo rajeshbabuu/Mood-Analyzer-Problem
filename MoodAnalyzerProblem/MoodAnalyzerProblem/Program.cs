@@ -6,11 +6,13 @@
         {
             Console.WriteLine("Welcome to Mood Analyzer Program");
             // MoodAnayser obj = new MoodAnayser("I am in SAD Mood");
-            MoodAnalyser obj = new MoodAnalyser(null);
+            Console.WriteLine("Enter string to check Mood ");
+            // string mood = Console.ReadLine();
+            MoodAnalyser moodAnayser = new MoodAnalyser();
 
-            string res = obj.AnalyseMood();
+            MoodAnalyser obj = new MoodAnalyser();
+            string res = obj.AnalyseMood("I am in Sad Mood");
             Console.WriteLine(res);
-
         }
     }
 }

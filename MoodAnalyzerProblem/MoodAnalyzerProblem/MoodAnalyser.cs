@@ -8,34 +8,16 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnalyser
     {
-        public string message;
-        static MoodAnalyser() //
+        public string AnalyseMood(string message)
         {
-
-        }
-        public MoodAnalyser(string message)
-        {
-            this.message = message;
-        }
-
-        public string AnalyseMood()
-        {
-            try
+            bool result = message.Contains("Sad");
+            if (result)
             {
-                bool result = this.message.Contains("Sad");
-
-                if (result)
-                {
-                    return "SAD";
-                }
-                else
-                {
-                    return "HAPPY";
-                }
+                return "SAD";
             }
-            catch (NullReferenceException)
+            else
             {
-                return "Should Not NULL value";
+                return "HAPPY";
             }
         }
     }
