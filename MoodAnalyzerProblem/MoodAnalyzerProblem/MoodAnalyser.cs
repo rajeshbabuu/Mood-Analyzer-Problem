@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyzerProblem
 {
-    public class MoodAnalyser
+    public class MoodAnayser
     {
         public string message;
-        static MoodAnalyser() 
+        static MoodAnayser() //
         {
 
         }
-        public MoodAnalyser(string message)
+        public MoodAnayser(string message)
         {
             this.message = message;
         }
@@ -22,6 +22,11 @@ namespace MoodAnalyzerProblem
         {
             try
             {
+                if (message == null)
+                {
+                    throw new CustomException(CustomException.ExceptionType.Null, "It is Null");
+
+                }
                 bool result = this.message.Contains("Sad");
 
                 if (result)
@@ -32,11 +37,28 @@ namespace MoodAnalyzerProblem
                 {
                     return "HAPPY";
                 }
+
             }
-            catch (NullReferenceException)
+            catch (CustomException obj)
             {
-                return "HAPPY";
+                return obj.Message;
             }
         }
+    }
+
+    public class CustomException : Exception
+    {
+        ExceptionType type;
+        public enum ExceptionType
+        {
+            Null, empty,
+
+        }
+        public CustomException(ExceptionType type, string message) : base(message)
+        {
+            this.type = type;
+        }
+
+
     }
 }
