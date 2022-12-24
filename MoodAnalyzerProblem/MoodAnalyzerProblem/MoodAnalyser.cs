@@ -8,25 +8,20 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnayser
     {
-        public string message;
-        static MoodAnayser() //
-        {
-
-        }
-        public MoodAnayser(string message)
-        {
-            this.message = message;
-        }
-
-        public string AnalyseMood()
-        {
-            try
+       
+        
+            public string message;
+            static MoodAnayser() //
             {
-                if (message == "")
-                {
-                    throw new CustomException(CustomException.ExceptionType.empty, "It is a empty string");
 
-                }
+            }
+            public MoodAnayser(string message)
+            {
+                this.message = message;
+            }
+
+            public string AnalyseMood()
+            {
                 bool result = this.message.Contains("Sad");
 
                 if (result)
@@ -37,28 +32,6 @@ namespace MoodAnalyzerProblem
                 {
                     return "HAPPY";
                 }
-
-            }
-            catch (CustomException obj)
-            {
-                return obj.Message;
             }
         }
     }
-
-    public class CustomException : Exception
-    {
-        ExceptionType type;
-        public enum ExceptionType
-        {
-            Null, empty,
-
-        }
-        public CustomException(ExceptionType type, string message) : base(message)
-        {
-            this.type = type;
-        }
-
-
-    }
-}
