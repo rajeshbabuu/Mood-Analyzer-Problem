@@ -5,13 +5,12 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Mood Analyzer Program");
-            Console.WriteLine("Enter string to check Mood ");
-            // string mood = Console.ReadLine();
-            MoodAnalyser moodAnayser = new MoodAnalyser();
+            // MoodAnayser obj = new MoodAnayser("I am in SAD Mood");
+            MoodAnalyser obj = new MoodAnalyser(null);
 
-            MoodAnalyser obj = new MoodAnalyser();
-            string res = obj.AnalyseMood("I am in Sad Mood");
+            string res = obj.AnalyseMood();
             Console.WriteLine(res);
+
         }
     }
 }

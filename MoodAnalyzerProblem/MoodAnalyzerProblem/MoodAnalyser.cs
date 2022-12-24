@@ -6,21 +6,37 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyzerProblem
 {
-    internal class MoodAnalyser
+    public class MoodAnalyser
     {
-        public string AnalyseMood(string message)
+        public string message;
+        static MoodAnalyser() //
         {
-            // string messeage = "I am in Sad Mood";
-            bool result = message.Contains("Sad");
-            if (result)
+
+        }
+        public MoodAnalyser(string message)
+        {
+            this.message = message;
+        }
+
+        public string AnalyseMood()
+        {
+            try
             {
-                return "Sad";
+                bool result = this.message.Contains("Sad");
+
+                if (result)
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
-            else
+            catch (NullReferenceException)
             {
-                return "";
+                return "Should Not NULL value";
             }
         }
     }
 }
-
