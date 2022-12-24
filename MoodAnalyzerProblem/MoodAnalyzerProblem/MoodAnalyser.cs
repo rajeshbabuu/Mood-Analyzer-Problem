@@ -22,9 +22,9 @@ namespace MoodAnalyzerProblem
         {
             try
             {
-                if (message == null)
+                if (message == "")
                 {
-                    throw new CustomException(CustomException.ExceptionType.Null, "It is Null");
+                    throw new CustomException(CustomException.ExceptionType.empty, "It is a empty string");
 
                 }
                 bool result = this.message.Contains("Sad");
